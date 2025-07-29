@@ -1,2 +1,7 @@
 # Mern
-MernStack
+
+ Contact Manager Application
+ NodeJS+ExpressJS
+
+ 
+
