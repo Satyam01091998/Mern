@@ -1,6 +1,6 @@
-import React, { use } from "react";  
+import React, { use } from "react"; 
+import axios from "axios"; 
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import { set } from "mongoose";
 
 import contactList from "./components/ContactList";
@@ -11,11 +11,11 @@ function App() {
   const [data,setData] = React.useState([]);
   const [error,setError] = React.useState("");
 
-  const fetchData = async (e) => {
+  const fetchContacts = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      const response = await axios.get('http://localhost:5000/api/contacts');
+      const response = await axios.get('https://humble-halibut-rrx5r569p5wh9q9-5000.app.github.dev/api/contacts');
       setData(response.data);
     } catch (err) {
       setError("Failed to fetch data");
