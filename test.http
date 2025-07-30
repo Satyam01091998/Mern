@@ -2,18 +2,17 @@
 
 
 # adding data
-POST http://localhost:5000/api/contacts
-Content-Type: application/json
+# adding data
+ POST http://localhost:5000/api/contacts
+ Content-Type: application/json
 
-{
-    "name": "Satyam Tiwari",
-    "email": "tsatyam07@gmail.com",
-    "phone": "1234567890"
-
-
-}
+ {
+     "name": "Satyam Tiwari",
+     "email": "tsatyam07@gmail.com",
+     "phone": "1234567890"
+ }
 # updating data
-#PUT http://localhost:5000/api/contacts/1
+# PUT http://localhost:5000/api/contacts/1
 
 
 # retrieving  1 data    
@@ -21,4 +20,4 @@ Content-Type: application/json
 
 
 # deleting data
-DELETE http://localhost:5000/api/contacts/1
+# DELETE http://localhost:5000/api/contacts/1
