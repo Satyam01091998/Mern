@@ -2,6 +2,7 @@
 console.log('Server is running...');
 import express, { application } from 'express';
 import dotenv from 'dotenv';    
+import cors from 'cors'; // Importing CORS for cross-origin requests
 
 
 const app = express();
@@ -12,7 +13,7 @@ dotenv.config();
 
 import connectDB from './config/dbConnection.js'; 
 connectDB(); // Connect to MongoDB
-
+app.use(cors()); // Use CORS middleware
 app.use('/api/contacts', contactRoutes); // Use the contact routes
 
 // declaration of middleware
