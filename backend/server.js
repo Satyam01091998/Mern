@@ -6,7 +6,7 @@ import cors from 'cors'; // Importing CORS for cross-origin requests
 
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 import contactRoutes from './routes/contactRoutes.js';
 app.use(express.json());
 dotenv.config(); 

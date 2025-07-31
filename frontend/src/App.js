@@ -1,41 +1,29 @@
-import React, { use } from "react"; 
-import axios from "axios"; 
-import ReactDOM from "react-dom/client";
-import { set } from "mongoose";
-
-import contactList from "./components/ContactList";
-import contactForm from "./components/ContactForm";
+import './App.css';
+import axios from 'axios';
+import ContactList from './components/contactList';
+import ContactForm from './components/contactForm';
+import React, { useEffect, useState } from 'react';
 
 function App() {
-  const [input,setInput] = React.useState("");
-  const [data,setData] = React.useState([]);
-  const [error,setError] = React.useState("");
+  const [contacts, setContacts] = useState([]);
 
-  const fetchContacts = async (e) => {
-    e.preventDefault();
-    setError("");
-    try {
-      const response = await axios.get('https://humble-halibut-rrx5r569p5wh9q9-5000.app.github.dev/api/contacts');
-      setData(response.data);
-    } catch (err) {
-      setError("Failed to fetch data");
-      console.error(err);
-    }   
+  const fetchContacts = async () => {
+    const res = await axios.get(`https://humble-halibut-rrx5r569p5wh9q9-5001.app.github.dev/api/contacts`);
+    console.log(res.data);
+    setContacts(res.data);
   };
 
+  useEffect(() => {
+    fetchContacts();
+  }, []);
 
-useEffect(() => {
-  fetchContacts();
-}, []); 
-
-return (
-  <div className = "container">
-    <h1>Contact List</h1>
-    <contactForm onContactAdded={fetchContacts} />
-    <contactList contacts={contacts} oncontactChanged = {fetchContacts}  />
+  return (
+    <div className="container">
+      <h1>Contact Manager in App</h1>
+      <ContactForm onContactAdded={fetchContacts} />
+      <ContactList contacts={contacts} onContactChanged={fetchContacts} />
     </div>
-);
+  );
 }
 
 export default App;
-
